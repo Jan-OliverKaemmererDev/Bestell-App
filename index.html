@@ -5,11 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestell App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/basket.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/standard.css">
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <img src="./assets/img/logo02.svg" alt="Bestell APP Logo" class="logo">
+            <nav>
+                <img src="./assets/icons/menu.png" alt="Menu" class="menu-icon">
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="restaurant-hero">
+            <div class="hero-image-container">
+                <img src="./assets/img/hero-bg.jpg" alt="Burger and Pizza" class="hero-bg">
+                <div class="restaurant-logo-badge">
+                    <img src="./assets/img/burger-logo.png" alt="BurgerHause Logo">
+                </div>
+            </div>
+            
+            <div class="restaurant-info">
+                <h1>BurgerHause <span class="rating">⭐ 4.1 (317)</span></h1>
+                <p>The best of Burgers, Pizza, and Greens, all in one great place.</p>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            
+            <section id="menu-container" class="menu-section">
+                <div class="category">
+                    <h2 class="category-title"><img src="./assets/icons/burger.png"> Burger & Sandwiches</h2>
+                    <div id="burger-list" class="meal-list">
+                        </div>
+                </div>
+
+                <div class="category">
+                    <h2 class="category-title"><img src="./assets/icons/pizza.png"> Pizza (30cm)</h2>
+                    <div id="pizza-list" class="meal-list"></div>
+                </div>
+
+                <div class="category">
+                    <h2 class="category-title"><img src="./assets/icons/salad.png"> Salad</h2>
+                    <div id="salad-list" class="meal-list"></div>
+                </div>
+            </section>
+
+            <aside id="basket-container" class="basket-section">
+                <div class="basket-card">
+                    <h2>Your Basket</h2>
+                    
+                    <div id="basket-content" class="basket-items">
+                        <div class="empty-basket">
+                            <p>Nothing here yet. Go ahead and choose something delicious!</p>
+                            <img src="./assets/icons/shopping-cart.png" alt="Empty Cart">
+                        </div>
+                    </div>
+
+                    <div id="basket-totals" class="basket-totals">
+                        <div class="total-line">
+                            <span>Subtotal</span>
+                            <span id="subtotal">0,00€</span>
+                        </div>
+                        <div class="total-line">
+                            <span>Delivery fee</span>
+                            <span id="delivery-fee">4,99€</span>
+                        </div>
+                        <div class="total-line final-total">
+                            <strong>Total</strong>
+                            <strong id="final-total">0,00€</strong>
+                        </div>
+                        
+                        <button id="order-btn" class="buy-now-btn" disabled>
+                            Buy now (<span id="btn-total">0,00€</span>)
+                        </button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <span>© 2025 BurgerHause</span>
+            <div class="footer-links">
+                <a href="#">Imprint</a>
+                <a href="#">Cookie Preferences</a>
+            </div>
+        </div>
+    </footer>
    
-    <script src="scripts/db.js"></script>
-    <script src="scripts/template.js"></script>
+    <script src="./scripts/db.js"></script>
+    <script src="./scripts/template.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
