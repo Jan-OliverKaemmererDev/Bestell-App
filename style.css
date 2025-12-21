@@ -140,11 +140,13 @@ header {
     justify-content: center;
     box-shadow: var(--shadow);
     border: 4px solid white;
+    overflow: hidden;
 }
 
 .restaurant-logo-badge img {
-    width: 80%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .restaurant-info {
