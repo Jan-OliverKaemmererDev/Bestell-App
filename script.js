@@ -8,7 +8,12 @@ function renderMeals() {
     let content = document.getElementById('menu-container');
     content.innerHTML = '';
     for (let i = 0; i < myMeals.length; i++) {
-        content.innerHTML += `<h2 class="category-title">${myMeals[i].category}</h2>`;
+        let categoryClass = myMeals[i].category.toLowerCase().replace(/\s/g, '-').split('-')[0]; 
+        content.innerHTML += `
+            <div class="category-header ${categoryClass}">
+                <h2 class="category-title">${myMeals[i].category}</h2>
+            </div>`;
+            
         for (let j = 0; j < myMeals[i].meals.length; j++) {
             content.innerHTML += getMealTemplate(i, j);
         }

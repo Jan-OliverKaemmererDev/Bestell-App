@@ -32,7 +32,46 @@ aside.basket-section {
     padding: 16px;
 }
 
+/* category-header section */
+.category-header {
+    display: flex;
+    align-items: center;
+    margin: 40px 0 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    position: relative;
+}
+
 .category-title {
-    margin: 30px 0 15px 0;
-    border-bottom: 2px solid var(--border-color);
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-main);
+    padding-left: 45px;
+    position: relative;
+    border-bottom: none;
+    margin: 0;
+}
+
+.category-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 35px;
+    height: 35px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.category-header.burger::before {
+    background-image: url('../assets/icons/burger.png');
+}
+
+.category-header.pizza::before {
+    background-image: url('../assets/icons/pizza.png');
+}
+
+.category-header.salad::before {
+    background-image: url('../assets/icons/salad.png');
 }
