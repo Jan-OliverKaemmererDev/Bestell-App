@@ -104,3 +104,8 @@ function loadFromLocalStorage() {
         basket = data;
     }
 }
+
+function toggleMenu() {
+    let menu = document.getElementById('side-menu');
+    menu.classList.toggle('active');
+}

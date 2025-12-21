@@ -18,7 +18,7 @@
             <img src="./assets/img/logo02.svg" alt="Bestell APP Logo" class="logo">
             </a>
             <nav>
-                <img src="./assets/icons/menu.svg" alt="Menu" class="menu-icon">
+                <img src="./assets/icons/menu.svg" alt="Menu" class="menu-icon" onclick="toggleMenu()">
             </nav>
         </div>
     </header>
@@ -102,6 +102,19 @@
         </div>
     </footer>
    
+<div id="side-menu" class="side-menu">
+    <div class="menu-header">
+        <span class="close-btn" onclick="toggleMenu()">×</span>
+    </div>
+    <div class="menu-links">
+        <a href="#" onclick="toggleMenu()">Mein Profil</a>
+        <a href="#" onclick="toggleMenu()">Meine Bestellungen</a>
+        <a href="#" onclick="toggleMenu()">Gutscheine</a>
+        <hr>
+        <a href="#" onclick="toggleMenu()">Impressum</a>
+    </div>
+</div>
+
     <script src="./scripts/db.js"></script>
     <script src="./scripts/template.js"></script>
     <script src="script.js"></script>
