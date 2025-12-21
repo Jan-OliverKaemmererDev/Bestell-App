@@ -19,3 +19,109 @@ button {
     cursor: pointer;
     transition: all 0.2s;
 }
+
+header {
+    background-color: var(--primary-color);
+    padding: 15px 0;
+    width: 100%;
+}
+
+.header-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+}
+
+.menu-icon {
+    width: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.restaurant-hero {
+    position: relative;
+    text-align: center;
+    background-color: var(--bg-white);
+    padding-bottom: 20px;
+}
+
+.hero-image-container {
+    position: relative;
+    height: 300px;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Das runde Logo in der Mitte */
+.restaurant-logo-badge {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    border: 4px solid white;
+}
+
+.restaurant-logo-badge img {
+    width: 80%;
+    height: auto;
+}
+
+.restaurant-info {
+    margin-top: 50px;
+}
+
+footer {
+    background-color: var(--primary-color);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    color: white;
+    padding: 30px 0;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    opacity: 1;
+}
