@@ -8,3 +8,14 @@
     --border-color: #ededed;
     --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.2s;
+}
