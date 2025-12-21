@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
 </head>
-<body>
+<body onload="init()">
     <header>
         <div class="header-content">
             <img src="./assets/img/logo02.svg" alt="Bestell APP Logo" class="logo">
@@ -80,7 +80,7 @@
                             <strong id="final-total">0,00€</strong>
                         </div>
                         
-                        <button id="order-btn" class="buy-now-btn" disabled>
+                        <button id="order-btn" onclick="checkout()" class="buy-now-btn" disabled>
                             Buy now (<span id="btn-total">0,00€</span>)
                         </button>
                     </div>
