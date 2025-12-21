@@ -1,0 +1,39 @@
+.meal-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-btn {
+    background: var(--bg-white);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.added-badge-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.plus-btn-orange {
+    background: white;
+    color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    font-size: 18px;
+}
