@@ -37,3 +37,8 @@
     margin-left: 10px;
     font-size: 18px;
 }
+
+button {
+    cursor: pointer;
+    transition: all 0.2s;
+}

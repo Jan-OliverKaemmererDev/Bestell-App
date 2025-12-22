@@ -7,11 +7,17 @@ function init() {
 function renderMeals() {
     let content = document.getElementById('menu-container');
     content.innerHTML = '';
+
     for (let i = 0; i < myMeals.length; i++) {
-        let categoryClass = myMeals[i].category.toLowerCase().replace(/\s/g, '-').split('-')[0]; 
+        let category = myMeals[i].category;
+        let icon = 'burger.png';
+        if(category.includes('Pizza')) icon = 'pizza.png';
+        if(category.includes('Salad')) icon = 'salad.png';
+
         content.innerHTML += `
-            <div class="category-header ${categoryClass}">
-                <h2 class="category-title">${myMeals[i].category}</h2>
+            <div class="category-header">
+                <img src="./assets/icons/${icon}" alt="" class="category-icon">
+                <h2 class="category-title-text">${category}</h2>
             </div>`;
             
         for (let j = 0; j < myMeals[i].meals.length; j++) {

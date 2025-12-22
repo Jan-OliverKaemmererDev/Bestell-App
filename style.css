@@ -13,11 +13,7 @@ body {
     background-color: var(--bg-light);
     color: var(--text-main);
     line-height: 1.5;
-}
-
-button {
-    cursor: pointer;
-    transition: all 0.2s;
+    margin: 0;
 }
 
 header {
@@ -42,11 +38,8 @@ header {
 
 .menu-icon {
     width: 30px;
-    filter: brightness(0) invert(1);
-}
-
-.menu-icon:hover {
     cursor: pointer;
+    filter: brightness(0) invert(1);
 }
 
 .side-menu {
