@@ -62,7 +62,7 @@ function saveAndRefresh() {
 
 function updateBasketDisplay() {
     let container = document.getElementById('basket-container');
-    let content = document.getElementById('baket-content');
+    let content = document.getElementById('basket-content');
     if (basket.length === 0) {
         container.style.display = 'none';
         return;

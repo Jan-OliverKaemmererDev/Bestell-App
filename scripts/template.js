@@ -27,7 +27,7 @@ function getButtonHtml(catIdx, mealIdx, basketIdx) {
 
 function getBasketItemTemplate(index) {
     let item = basket[index];
-    let icon = item.amount > 1 ? '-' : '<img src="./assets/icons/trash.png" class="trash-icon">';
+    let icon = item.amount > 1 ? '-' : '<img src="../assets/icons/delete-default.svg" class="trash-icon">';
     let totalItemPrice = (item.price * item.amount).toFixed(2).replace('.', ',');
     return `
         <div class="basket-item">
