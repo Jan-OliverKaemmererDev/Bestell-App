@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #ff8a00;
-    --primary-hover: #e67e00;
+    --primary-color: #E76C1F;
+    --primary-hover: #e67d3b;
     --bg-light: #f8f9fa;
     --bg-white: #ffffff;
     --text-main: #2d3133;
@@ -48,7 +48,7 @@ header {
     right: -300px;
     width: 300px;
     height: 100%;
-    background-color: rgba(255, 138, 0, 0.9);
+    background-color: rgb(231, 108, 31, 0.9);
     z-index: 1001;
     transition: right 0.3s ease-in-out;
     box-shadow: -2px 0 8px rgba(0,0,0,0.2);
