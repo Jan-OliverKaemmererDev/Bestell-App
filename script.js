@@ -16,8 +16,10 @@ function renderMeals() {
 
         content.innerHTML += `
             <div class="category-header">
-                <img src="./assets/icons/${icon}" alt="" class="category-icon">
-                <h2 class="category-title-text">${category}</h2>
+                <div class="category-header-content">
+                    <img src="./assets/icons/${icon}" alt="" class="category-icon">
+                    <h2 class="category-title-text">${category}</h2>
+                </div>
             </div>`;
             
         for (let j = 0; j < myMeals[i].meals.length; j++) {

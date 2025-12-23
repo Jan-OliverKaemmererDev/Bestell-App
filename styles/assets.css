@@ -4,16 +4,20 @@
     align-items: center;
     background: var(--bg-white);
     border: 1px solid var(--border-color);
-    padding: 12px;
+    padding: 16px;
     margin-bottom: 12px;
     border-radius: 12px;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .meal-main-content {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     flex: 1;
+    max-width: 100%;
 }
 
 .meal-image-container {
