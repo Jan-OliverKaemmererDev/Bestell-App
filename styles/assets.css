@@ -66,6 +66,11 @@
     font-weight: bold;
 }
 
+.add-btn:hover {
+    background: var(--primary-hover);
+    color: white;
+}
+
 .added-badge-container {
     display: flex;
     align-items: center;

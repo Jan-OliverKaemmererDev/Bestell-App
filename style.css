@@ -16,6 +16,20 @@ body {
     margin: 0;
 }
 
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.menu-section {
+    flex: 1;
+}
+
 header {
     background-color: var(--primary-color);
     padding: 15px 0;
