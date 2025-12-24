@@ -25,17 +25,31 @@ a {
 .category-header {
     background-color: var(--primary-color);
     height: 40px;
-    margin: 20px 0;
+    margin: 40px 0 25px 0;
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
+    width: 100%;
+}
+
+.category-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -5000px; /* Dehnt den Hintergrund weit nach links aus */
+    right: -5000px; /* Dehnt den Hintergrund weit nach rechts aus */
+    background-color: var(--primary-color);
+    z-index: -1; /* Hinter den Text legen */
 }
 
 .category-header-content {
+    width: 100%;
+    max-width: 800px; /* Gleiche Breite wie deine Menü-Karten */
     display: flex;
     align-items: center;
     gap: 15px;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .category-icon {

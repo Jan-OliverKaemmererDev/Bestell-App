@@ -23,6 +23,7 @@ body {
     gap: 30px;
     max-width: 1440px;
     margin: 0 auto;
+    padding-left: 20px;
 }
 
 .menu-section {
@@ -134,7 +135,6 @@ header {
     object-fit: cover;
 }
 
-/* Das runde Logo in der Mitte */
 .restaurant-logo-badge {
     position: absolute;
     bottom: -40px;
@@ -187,7 +187,6 @@ header {
     display: flex;
 }
 
-/* Styling für die Bewertung */
 .rating-container {
     display: flex;
     align-items: center;
