@@ -1,19 +1,11 @@
-aside.basket-section {
-    flex: 1;
-    position: sticky;
-    top: 20px;
-    height: fit-content;
-    background-color: var(--bg-white);
-    box-shadow: var(--shadow);
-    border-radius: 8px;
-}
-
 .basket-section {
     width: 350px;
     position: sticky;
     top: 20px;
     z-index: 100;
-    margin-top: 20px;
+    margin-top: 40px;
+    height: fit-content;
+    background-color: transparent; 
 }
 
 .basket-card {
