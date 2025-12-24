@@ -1,39 +1,41 @@
 function getMealTemplate(categoryIndex, mealIndex) {
-    let meal = myMeals[categoryIndex].meals[mealIndex];
-    let category = myMeals[categoryIndex].category;
-    let basketIndex = findInBasket(meal.name);
-    let buttonArea = getButtonHtml(categoryIndex, mealIndex, basketIndex);
-
-    let imagePath = `./assets/meals/${category}/${meal.name}.jpg`;
-    let imageClass = "meal-img";
-    let specialStyle = "";
-
-    // Spezielle Logik für Pizza (alle nutzen das gleiche Bild pizza.jpg)
-    if (meal.name === "Pizza Chorizo" || meal.name === "Funghi" || meal.name === "Quattro Formaggi with Chicken") {
-        imagePath = `./assets/meals/Pizza (30cm)/pizza.jpg`;
-        imageClass += " pizza-shift";
-        
-        if (meal.name === "Pizza Chorizo") specialStyle = "object-position: left;";
-        if (meal.name === "Funghi") specialStyle = "object-position: center;";
-        if (meal.name === "Quattro Formaggi with Chicken") specialStyle = "object-position: right;";
-    }
+    const meal = myMeals[categoryIndex].meals[mealIndex];
+    const basketIndex = findInBasket(meal.name);
+    const { imagePath, specialStyle } = getMealImageSettings(meal.name, myMeals[categoryIndex].category);
 
     return `
         <div class="meal-card">
             <div class="meal-main-content">
                 <div class="meal-image-container">
-                    <img src="${imagePath}" alt="${meal.name}" class="${imageClass}" style="${specialStyle}" onerror="this.src='./assets/img/logo02.svg'">
+                    <img src="${imagePath}" alt="${meal.name}" class="meal-img" style="${specialStyle}" onerror="this.src='./assets/img/logo02.svg'">
                 </div>
                 <div class="meal-info">
                     <h3>${meal.name}</h3>
                     <p>${meal.description}</p>
-                    <div class="price">${meal.price.toFixed(2).replace('.', ',')}€</div>
+                    <div class="price">${formatPrice(meal.price)}</div>
                 </div>
             </div>
             <div class="meal-action-area">
-                ${buttonArea}
+                ${getButtonHtml(categoryIndex, mealIndex, basketIndex)}
             </div>
         </div>`;
+}
+
+function formatPrice(price) {
+    return price.toFixed(2).replace('.', ',') + '€';
+}
+
+function getMealImageSettings(mealName, category) {
+    let imagePath = `./assets/meals/${category}/${mealName}.jpg`;
+    let specialStyle = "";
+
+    if (["Pizza Chorizo", "Funghi", "Quattro Formaggi with Chicken"].includes(mealName)) {
+        imagePath = `./assets/meals/Pizza (30cm)/pizza.jpg`;
+        if (mealName === "Pizza Chorizo") specialStyle = "object-position: left;";
+        if (mealName === "Funghi") specialStyle = "object-position: center;";
+        if (mealName === "Quattro Formaggi with Chicken") specialStyle = "object-position: right;";
+    }
+    return { imagePath, specialStyle };
 }
 
 function getButtonHtml(catIdx, mealIdx, basketIdx) {
@@ -60,6 +62,7 @@ function getBasketItemTemplate(index) {
             </div>
             <div class="item-controls">
                 <button onclick="changeQuantity(${index}, -1)">${icon}</button>
+                <span style="font-weight:bold;">${item.amount}</span>
                 <button onclick="changeQuantity(${index}, 1)">+</button>
             </div>
         </div>`;

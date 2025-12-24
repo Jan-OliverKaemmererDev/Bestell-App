@@ -1,8 +1,19 @@
+aside.basket-section {
+    flex: 1;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    background-color: var(--bg-white);
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+}
+
 .basket-section {
     width: 350px;
     position: sticky;
     top: 20px;
-    z-index: 10;
+    z-index: 100;
+    margin-top: 20px;
 }
 
 .basket-card {
@@ -10,8 +21,7 @@
     color: white;
     border-radius: 20px;
     padding: 24px;
-    display: flex;
-    flex-direction: column;
+    box-shadow: var(--shadow);
 }
 
 .basket-card h2 {
@@ -21,9 +31,10 @@
 }
 
 .basket-items {
-    max-height: 380px;
+    max-height: 270px; 
     overflow-y: auto;
-    padding-right: 5px;
+    overflow-x: hidden;
+    margin-bottom: 20px;
 }
 
 .basket-items::-webkit-scrollbar {
@@ -35,14 +46,11 @@
 }
 
 .basket-item {
-    background-color: #fceee3;
+    background-color: #fceee3; 
     color: #2d3133;
     border-radius: 12px;
     padding: 12px;
     margin-bottom: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
 }
 
 .item-name-row {

@@ -5,25 +5,34 @@ function init() {
 }
 
 function renderMeals() {
-    let content = document.getElementById('menu-container');
-    content.innerHTML = '';
+    const containers = {
+        'Burgers': document.getElementById('burger-items'),
+        'Pizza': document.getElementById('pizza-items'),
+        'Salads': document.getElementById('salad-items')
+    };
+
+    const values = Object.values(containers);
+    for (let i = 0; i < values.length; i++) {
+        let div = values[i];
+        if (div) {
+            div.innerHTML = '';
+        }
+    }
 
     for (let i = 0; i < myMeals.length; i++) {
-        let category = myMeals[i].category;
-        let icon = 'burger.png';
-        if(category.includes('Pizza')) icon = 'pizza.png';
-        if(category.includes('Salad')) icon = 'salad.png';
+        let categoryName = myMeals[i].category;
+        
+        let targetId = '';
+        if(categoryName.includes('Burger')) targetId = 'burger-items';
+        if(categoryName.includes('Pizza')) targetId = 'pizza-items';
+        if(categoryName.includes('Salad')) targetId = 'salad-items';
 
-        content.innerHTML += `
-            <div class="category-header">
-                <div class="category-header-content">
-                    <img src="./assets/icons/${icon}" alt="" class="category-icon">
-                    <h2 class="category-title-text">${category}</h2>
-                </div>
-            </div>`;
-            
-        for (let j = 0; j < myMeals[i].meals.length; j++) {
-            content.innerHTML += getMealTemplate(i, j);
+        let container = document.getElementById(targetId);
+        
+        if (container) {
+            for (let j = 0; j < myMeals[i].meals.length; j++) {
+                container.innerHTML += getMealTemplate(i, j);
+            }
         }
     }
 }
@@ -63,21 +72,22 @@ function saveAndRefresh() {
 }
 
 function updateBasketDisplay() {
-    let container = document.getElementById('basket-container');
-    let content = document.getElementById('basket-content');
+    let basketContainer = document.getElementById('basket-container');
+    let contentSection = document.getElementById('basket-content');
+
     if (basket.length === 0) {
-        container.style.display = 'none';
-        return;
+        basketContainer.style.display = 'none';
+    } else{
+        basketContainer.style.display = 'block';
+        renderBasketItems(contentSection);
+        calculateTotals();
     }
-    container.style.display = 'block';
-    renderBasketItems(content);
-    calculateTotals();
 }
 
-function renderBasketItems(content) {
-    content.innerHTML = '';
+function renderBasketItems(container) {
+    container.innerHTML = '';
     for (let i = 0; i < basket.length; i++) {
-        content.innerHTML += getBasketItemTemplate(i);
+        container.innerHTML += getBasketItemTemplate(i);
     }
 }
 
@@ -86,11 +96,16 @@ function calculateTotals() {
     for (let i = 0; i < basket.length; i++) {
         subtotal += (basket[i].price * basket[i].amount);
     }
-    let total = subtotal + 4.99;
-    document.getElementById('subtotal').innerText = subtotal.toFixed(2).replace('.', ',') + '€';
-    document.getElementById('final-total').innerText = total.toFixed(2).replace('.', ',') + '€';
-    document.getElementById('btn-total').innerText = total.toFixed(2).replace('.', ',') + '€';
-    document.getElementById('order-btn').disabled = false;
+    let deliveryFee = 4.99;
+    let total = subtotal + deliveryFee;
+
+    document.getElementById('subtotal').innerText = formatPrice(subtotal);
+    document.getElementById('final-total').innerText = formatPrice(total);
+    document.getElementById('btn-total').innerText = formatPrice(total);
+}
+
+function formatPrice(price) {
+    return price.toFixed(2).replace('.', ',') + '€';
 }
 
 function checkout() {

@@ -52,20 +52,45 @@
         <div class="content-wrapper">
             
             <section id="menu-container" class="menu-section">
-            </section>
-
-            <aside id="basket-container" class="basket-section">
-                <div class="basket-card">
-                    <h2>Your Basket</h2>
-                    
-                    <div id="basket-content" class="basket-items">
-                        <div class="empty-basket">
-                            <p>Nothing here yet. Go ahead and choose something delicious!</p>
-                            <img src="./assets/icons/shopping_cart.svg" alt="Empty Cart">
+                <div id="section-burger" class="category-group">
+                    <div class="category-header burger">
+                        <div class="category-header-content">
+                            <img src="./assets/icons/burger.png" alt="Burger" class="category-icon">
+                            <h2 class="category-title-text">Burger & Sandwiches</h2>
                         </div>
                     </div>
+                    <div id="burger-items" class="items-grid"></div>
+                </div>
 
-                    <div id="basket-totals" class="basket-totals">
+                <div id="section-pizza" class="category-group">
+                    <div class="category-header pizza">
+                        <div class="category-header-content">
+                            <img src="./assets/icons/pizza.png" alt="Pizza" class="category-icon">
+                            <h2 class="category-title-text">Pizza</h2>
+                        </div>
+                    </div>
+                    <div id="pizza-items" class="items-grid"></div>
+                </div>
+
+                <div id="section-salad" class="category-group">
+                    <div class="category-header salad">
+                        <div class="category-header-content">
+                            <img src="./assets/icons/salad.png" alt="Salad" class="category-icon">
+                            <h2 class="category-title-text">Salad</h2>
+                        </div>
+                    </div>
+                    <div id="salad-items" class="items-grid"></div>
+                </div>
+            </section>
+
+            <aside id="basket-container" class="basket-section" style="display: none;">
+                <div class="basket-card">
+                    <h2>Your Basket</h2>
+        
+                    <div id="basket-content" class="basket-items">
+                        </div>
+
+                    <div id="basket-totals-container" class="basket-totals">
                         <div class="total-line">
                             <span>Subtotal</span>
                             <span id="subtotal">0,00€</span>
@@ -78,8 +103,8 @@
                             <strong>Total</strong>
                             <strong id="final-total">0,00€</strong>
                         </div>
-                        
-                        <button id="order-btn" onclick="checkout()" class="buy-now-btn" disabled>
+            
+                        <button id="order-btn" onclick="checkout()" class="buy-now-btn">
                             Buy now (<span id="btn-total">0,00€</span>)
                         </button>
                     </div>
