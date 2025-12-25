@@ -122,7 +122,8 @@
             </div>
         </div>
     </footer>
-   
+
+<!-- Burger Menu Section -->
 <div id="side-menu" class="side-menu">
     <div class="menu-header">
         <span class="close-btn" onclick="toggleMenu()">×</span>
@@ -134,6 +135,16 @@
         <hr>
         <a href="#" onclick="toggleMenu()">Impressum</a>
     </div>
+</div>
+
+<!-- Order Confirmation Section -->
+<div id="message-overlay" class="message-overlay" style="display: none;"></div>
+
+<div id="order-confirmation" class="order-message" style="display: none;">
+    <span class="close-order-msg" onclick="closeConfirmation()">×</span>
+    <img src="./assets/icons/truck-order-confirmed.svg" alt="Truck" class="message-icon">
+    <h3>Order Confirmed!</h3>
+    <p>Your food is on the way!</p>
 </div>
 
     <script src="./scripts/db.js"></script>

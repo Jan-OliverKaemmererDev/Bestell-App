@@ -115,11 +115,21 @@ function checkout() {
 }
 
 function showConfirmationMessage() {
-    let msg = document.createElement('div');
-    msg.className = 'order-message';
-    msg.innerHTML = '<h3>Bestellung abgeschickt!</h3><p>Vielen Dank für Ihren Testkauf.</p>';
-    document.body.appendChild(msg);
-    setTimeout(function() { msg.remove(); }, 3000);
+    let overlay = document.getElementById('message-overlay');
+    let msg = document.getElementById('order-confirmation');
+
+    overlay.style.display = 'block';
+    msg.style.display = 'block';
+
+    setTimeout(closeConfirmation, 4000);
+}
+
+function closeConfirmation() {
+    let overlay = document.getElementById('message-overlay');
+    let msg = document.getElementById('order-confirmation');
+
+    if (overlay) overlay.style.display = 'none';
+    if (msg) msg.style.display = 'none';
 }
 
 function saveToLocalStorage() {
