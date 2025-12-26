@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./styles/basket.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/mobile.css">
 </head>
 <body onload="init()">
     <header>
@@ -85,6 +86,8 @@
 
             <aside id="basket-container" class="basket-section" style="display: none;">
                 <div class="basket-card">
+                    <span class="close-basket-mobile" onclick="toggleMobileBasket()">×</span>
+
                     <h2>Your Basket</h2>
         
                     <div id="basket-content" class="basket-items">
@@ -147,8 +150,21 @@
     <p>Your food is on the way!</p>
 </div>
 
-    <script src="./scripts/db.js"></script>
-    <script src="./scripts/template.js"></script>
-    <script src="./script.js"></script>
+<!-- Mobile Section -->
+<nav class="mobile-bottom-nav">
+    <div class="nav-icon-box"><img src="./assets/icons/mobile/home-default.svg" alt="Home"></div>
+    <div class="nav-icon-box"><img src="./assets/icons/mobile/profile-default.svg" alt="Profil"></div>
+    <div class="nav-icon-box"><img src="./assets/icons/mobile/orders-default.svg" alt="Menu"></div>
+    <div class="nav-icon-box basket-icon-container" onclick="toggleMobileBasket()">
+        <img src="./assets/icons/mobile/basket-default.svg" alt="Basket">
+        <span id="mobile-basket-badge" class="basket-badge" style="display: none;">0</span>
+    </div>
+</nav>
+
+<script src="./scripts/db.js"></script>
+<script src="./scripts/template.js"></script>
+<script src="./script.js"></script>
+<script src="./scripts/script-mobile.js"></script>
+
 </body>
 </html>

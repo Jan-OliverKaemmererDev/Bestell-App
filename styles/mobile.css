@@ -1,0 +1,112 @@
+@media (max-width: 768px) {
+    .category-section {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden; /* Verhindert horizontales Scrollen */
+        padding: 0 16px; /* Abstand zum Rand, damit der Header nicht klebt */
+        box-sizing: border-box;
+    }
+
+    .category-header {
+        display: inline-block; /* WICHTIG: Der Hintergrund geht nur so weit wie der Text */
+        /* ODER falls er die volle (begrenzte) Breite haben soll: */
+        /* display: block; width: 100%; */
+        
+        background-color: #ff8000; /* Dein Orange */
+        border-radius: 8px; /* Optional: Abgerundete Ecken sehen mobil besser aus */
+        padding: 8px 16px;
+        margin-bottom: 15px;
+        white-space: nowrap; /* Verhindert Zeilenumbruch im Titel */
+    }
+    
+    /* Meal-Card: Bild oben, Text unten wie in der Vorlage */
+    .meal-card {
+        flex-direction: column !important;
+        background-color: #fceee3 !important; /* Pfirsich-Ton aus mobile-fiew-meal-card.jpg */
+        border: none !important;
+        border-radius: 20px !important;
+        padding: 0 0 15px 0 !important;
+        overflow: hidden;
+    }
+
+    .meal-image-container {
+        width: 100% !important;
+        height: 180px !important;
+    }
+
+    /* Mobiler Warenkorb als Slide-in von unten */
+    #basket-container.basket-section {
+        display: block !important; /* Muss block sein, damit Animation sichtbar ist */
+        position: fixed !important;
+        left: 0;
+        width: 100% !important;
+        height: 85vh;
+        z-index: 2000;
+        background-color: #2d3133;
+        transition: transform 0.4s ease-in-out; /* Wir nutzen transform für bessere Performance */
+        
+        /* Standard: Nach unten aus dem Bild geschoben */
+        transform: translateY(100%); 
+        bottom: 0;
+    }
+
+    #basket-container.mobile-open {
+        transform: translateY(0);
+    }
+
+    /* Schließen-Button im Warenkorb */
+    .close-basket-mobile {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 30px;
+        font-weight: bold;
+        color: white; /* Oder weiß, je nach Design */
+        cursor: pointer;
+        z-index: 2100; /* Muss HÖHER sein als der basket-container */
+        padding: 10px; /* Größere Klickfläche für Finger */
+    }
+
+    /* Sticky Navigation unten */
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: #2d3133;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 2001;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .basket-badge {
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        background-color: white;
+        color: #E76C1F;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        font-size: 11px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+    }
+
+    body {
+        padding-bottom: 80px; /* Platz für die untere Leiste */
+    }
+}
+
+/* Verstecke mobile Elemente auf dem Desktop */
+@media (min-width: 769px) {
+    .mobile-bottom-nav, .close-basket-mobile {
+        display: none !important;
+    }
+}
