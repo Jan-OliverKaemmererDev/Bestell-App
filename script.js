@@ -58,8 +58,6 @@ function addToBasket(catIdx, mealIdx) {
 }
 
 function changeQuantity(index, change) {
-    if (!basket[index]) return;
-
     basket[index].amount += change;
     if (basket[index].amount <= 0) {
         basket.splice(index, 1);
@@ -78,27 +76,11 @@ function updateBasketDisplay() {
     let contentSection = document.getElementById('basket-content');
 
     if (basket.length === 0) {
-        // 1. Desktop-Ansicht: Warenkorb komplett ausblenden
-        if (window.innerWidth > 768) {
-            basketContainer.style.display = 'none';
-        }
-        
-        // 2. Inhalt leeren (wichtig für die mobile Ansicht, falls sie noch offen ist)
-        contentSection.innerHTML = '<p class="empty-msg">Your basket is empty!</p>';
-        
-        // 3. Totale Werte auf 0 setzen oder Bereich ausblenden
-        document.getElementById('subtotal').innerText = '0,00€';
-        document.getElementById('final-total').innerText = '0,00€';
-    } else {
-        // Warenkorb anzeigen und befüllen
+        basketContainer.style.display = 'none';
+    } else{
         basketContainer.style.display = 'block';
         renderBasketItems(contentSection);
         calculateTotals();
-    }
-
-    // Mobile Badge aktualisieren
-    if (typeof updateMobileBadge === 'function') {
-        updateMobileBadge();
     }
 }
 
@@ -127,18 +109,8 @@ function formatPrice(price) {
 }
 
 function checkout() {
-    if (basket.length === 0) return;
     basket = [];
-
     saveAndRefresh();
-
-    if (typeof toggleMobileBasket === 'function') {
-        let basketContainer = document.getElementById('basket-container');
-        if (basketContainer && basketContainer.classList.contains('mobile-open')) {
-            toggleMobileBasket();
-        }
-    }
-
     showConfirmationMessage();
 }
 
@@ -173,7 +145,5 @@ function loadFromLocalStorage() {
 
 function toggleMenu() {
     let menu = document.getElementById('side-menu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
+    menu.classList.toggle('active');
 }

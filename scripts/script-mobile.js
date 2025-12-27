@@ -1,26 +1,25 @@
-function toggleMobileBasket() {
-    let basketContainer = document.getElementById('basket-container');
-    if (basketContainer) {
-        basketContainer.classList.toggle('mobile-open');
+function openMobileBasket() {
+    var basket = document.getElementById('basket-container');
+    if (basket) {
+        basket.style.display = 'block';
+        setTimeout(function() {
+            basket.classList.add('mobile-open');
+        }, 10);
     }
 }
 
-function updateMobileBadge() {
-    let badge = document.getElementById('mobile-basket-badge');
-    if (!badge) return;
-
-    let totalItems = 0;
-    for (let i = 0; i < basket.length; i++) {
-        totalItems += basket[i].amount;
-    }
-
-    if (totalItems > 0) {
-        badge.innerText = totalItems;
-        badge.style.display = 'flex';
-    } else {
-        badge.style.display = 'none';
-        // Wenn leer, schließe den mobilen Warenkorb automatisch
-        let basketContainer = document.getElementById('basket-container');
-        if (basketContainer) basketContainer.classList.remove('mobile-open');
+function closeMobileBasket() {
+    var basket = document.getElementById('basket-container');
+    if (basket) {
+        basket.classList.remove('mobile-open');
+        
+        setTimeout(function() {
+            if (!basket.classList.contains('mobile-open')) {
+            
+                if (window.innerWidth <= 768) {
+                    basket.style.display = 'none';
+                }
+            }
+        }, 300);
     }
 }
