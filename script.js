@@ -147,3 +147,19 @@ function toggleMenu() {
     let menu = document.getElementById('side-menu');
     menu.classList.toggle('active');
 }
+
+function toggleMobileBasket() {
+    var basket = document.getElementById('basket-container');
+    
+    if (basket.classList.contains('show-mobile')) {
+        basket.classList.remove('show-mobile');
+        setTimeout(function() {
+            basket.style.display = 'none';
+        }, 300);
+    } else {
+        basket.style.display = 'block';
+        setTimeout(function() {
+            basket.classList.add('show-mobile');
+        }, 10);
+    }
+}

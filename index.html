@@ -85,7 +85,7 @@
             </section>
 
             <aside id="basket-container" class="basket-section" style="display: none;">
-                <span class="close-basket-mobile" onclick="closeMobileBasket()">×</span>
+                <div class="close-basket-mobile" onclick="toggleMobileBasket()">×</div>
                 
                 <div class="basket-card">
                     <h2>Your Basket</h2>
@@ -161,7 +161,7 @@
     <a href="#" class="nav-item">
         <img src="./assets/icons/mobile/orders-default.svg" alt="Menu">
     </a>
-    <a href="#" class="nav-item basket-nav" onclick="openMobileBasket()">
+    <a href="#" class="nav-item basket-nav" onclick="toggleMobileBasket()">
         <img src="./assets/icons/mobile/basket-default.svg" alt="Cart">
         <span id="nav-cart-count" class="cart-badge">0</span>
     </a>
@@ -170,6 +170,5 @@
 <script src="./scripts/db.js"></script>
 <script src="./scripts/template.js"></script>
 <script src="./script.js"></script>
-<script src="./scripts/script-mobile.js"></script>
 </body>
 </html>
