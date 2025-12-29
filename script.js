@@ -79,22 +79,26 @@ function updateBasketDisplay() {
     updateMobileBadge();
 
     if (basket.length === 0) {
+        basketContainer.classList.remove('show-mobile');
+        if (totalsContainer) {
+            totalsContainer.style.display = 'none';
+        }
+
         if (window.innerWidth <= 768) {
             renderEmptyMobileBasket(contentSection);
+            basketContainer.style.display = 'none'; 
+            basketContainer.classList.add('no-scroll');
         } else {
             basketContainer.style.display = 'none';
         }
-        basketContainer.classList.remove('show-mobile');
     } else {
+        basketContainer.classList.remove('no-scroll');
         if (totalsContainer) {
-            totalsContainer.style.display = 'block'; 
+            totalsContainer.style.display = 'block';
         }
+
         if (window.innerWidth <= 768) {
-            if (!basketContainer.classList.contains('show-mobile')) {
-                basketContainer.style.display = 'none';
-            } else {
-                basketContainer.style.display = 'block';
-            }
+            basketContainer.style.display = basketContainer.classList.contains('show-mobile') ? 'block' : 'none';
         } else {
             basketContainer.style.display = 'block';
         }
