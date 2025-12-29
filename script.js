@@ -75,12 +75,49 @@ function updateBasketDisplay() {
     let basketContainer = document.getElementById('basket-container');
     let contentSection = document.getElementById('basket-content');
 
+    // 1. ZUERST IMMER das Badge und die Berechnungen aktualisieren
+    // Das muss AUCH passieren, wenn der Korb leer ist, damit die Zahl auf 0 geht
+    updateMobileBadge();
+
     if (basket.length === 0) {
+        // 2. Wenn leer: Container verstecken und Inhalt leeren
         basketContainer.style.display = 'none';
-    } else{
-        basketContainer.style.display = 'block';
+        basketContainer.classList.remove('show-mobile');
+        if (contentSection) {
+            contentSection.innerHTML = '<p class="empty-basket-text">Nothing here yet.</p>';
+        }
+    } else {
+        // 3. Wenn nicht leer: Anzeige-Logik (Mobile vs Desktop)
+        if (window.innerWidth <= 768) {
+            if (!basketContainer.classList.contains('show-mobile')) {
+                basketContainer.style.display = 'none';
+            } else {
+                basketContainer.style.display = 'block';
+            }
+        } else {
+            basketContainer.style.display = 'block';
+        }
+
+        // 4. Inhalte rendern
         renderBasketItems(contentSection);
         calculateTotals();
+    }
+}
+
+function updateMobileBadge() {
+    var totalAmount = 0;
+    var badge = document.getElementById('nav-cart-count');
+    for (var i = 0; i < basket.length; i++) {
+        totalAmount += basket[i].amount;
+    }
+
+    if (badge) {
+        badge.innerText = totalAmount;
+        if (totalAmount > 0) {
+            badge.style.display = 'flex';
+        } else {
+            badge.style.display = 'none';
+        }
     }
 }
 
@@ -149,17 +186,17 @@ function toggleMenu() {
 }
 
 function toggleMobileBasket() {
-    var basket = document.getElementById('basket-container');
+    let basketContainer = document.getElementById('basket-container');
     
-    if (basket.classList.contains('show-mobile')) {
-        basket.classList.remove('show-mobile');
+    if (basketContainer.classList.contains('show-mobile')) {
+        basketContainer.classList.remove('show-mobile');
         setTimeout(function() {
-            basket.style.display = 'none';
+            basketContainer.style.display = 'none';
         }, 300);
     } else {
-        basket.style.display = 'block';
+        basketContainer.style.display = 'block';
         setTimeout(function() {
-            basket.classList.add('show-mobile');
+            basketContainer.classList.add('show-mobile');
         }, 10);
     }
 }
