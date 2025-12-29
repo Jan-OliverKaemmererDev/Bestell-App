@@ -74,20 +74,21 @@ function saveAndRefresh() {
 function updateBasketDisplay() {
     let basketContainer = document.getElementById('basket-container');
     let contentSection = document.getElementById('basket-content');
+    let totalsContainer = document.getElementById('basket-totals-container');
 
-    // 1. ZUERST IMMER das Badge und die Berechnungen aktualisieren
-    // Das muss AUCH passieren, wenn der Korb leer ist, damit die Zahl auf 0 geht
     updateMobileBadge();
 
     if (basket.length === 0) {
-        // 2. Wenn leer: Container verstecken und Inhalt leeren
-        basketContainer.style.display = 'none';
-        basketContainer.classList.remove('show-mobile');
-        if (contentSection) {
-            contentSection.innerHTML = '<p class="empty-basket-text">Nothing here yet.</p>';
+        if (window.innerWidth <= 768) {
+            renderEmptyMobileBasket(contentSection);
+        } else {
+            basketContainer.style.display = 'none';
         }
+        basketContainer.classList.remove('show-mobile');
     } else {
-        // 3. Wenn nicht leer: Anzeige-Logik (Mobile vs Desktop)
+        if (totalsContainer) {
+            totalsContainer.style.display = 'block'; 
+        }
         if (window.innerWidth <= 768) {
             if (!basketContainer.classList.contains('show-mobile')) {
                 basketContainer.style.display = 'none';
@@ -98,10 +99,20 @@ function updateBasketDisplay() {
             basketContainer.style.display = 'block';
         }
 
-        // 4. Inhalte rendern
         renderBasketItems(contentSection);
         calculateTotals();
     }
+}
+
+function renderEmptyMobileBasket(container) {
+    container.innerHTML = `
+        <div class="empty-basket-mobile">
+            <p class="empty-title">Nothing here yet.</p>
+            <p class="empty-subtitle">Go ahead and choose something delicious!</p>
+            <img src="./assets/icons/shopping_cart.svg" alt="Empty Basket" class="empty-basket-icon">
+        </div>
+    `;
+    document.getElementById('basket-totals-container').style.display = 'none';
 }
 
 function updateMobileBadge() {

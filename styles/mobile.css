@@ -131,6 +131,46 @@
         height: 18px;
     }
 
+    #basket-container.show-mobile {
+        background-color: #33312f !important;
+        color: #f5e0cf !important;
+    }
+
+    .empty-basket-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .empty-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .empty-subtitle {
+        font-size: 18px;
+        margin-bottom: 40px;
+        max-width: 250px;
+    }
+
+    .empty-basket-icon {
+        width: 120px;
+        height: auto;
+        opacity: 0.8;
+        filter: sepia(1) saturate(0.5) brightness(1.2);
+    }
+    
+    .basket-card h2 {
+        color: #f5e0cf;
+        text-align: center;
+        margin-top: 40px;
+    }
+
     body {
         padding-bottom: 72px; 
     }
