@@ -7,7 +7,7 @@ function getMealTemplate(categoryIndex, mealIndex) {
         <div class="meal-card">
             <div class="meal-main-content">
                 <div class="meal-image-container">
-                    <img src="${imagePath}" alt="${meal.name}" class="meal-img" style="${specialStyle}" onerror="this.src='./assets/img/logo02.svg'">
+                    <img src="${imagePath}" alt="${meal.name}" class="meal-img img-${meal.name.toLowerCase().replace(/\s+/g, '-')}" style="${specialStyle}" onerror="this.src='./assets/img/logo02.svg'">
                 </div>
                 <div class="meal-info">
                     <h3>${meal.name}</h3>

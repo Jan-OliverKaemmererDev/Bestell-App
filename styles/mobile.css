@@ -113,6 +113,7 @@
 
     .close-basket-mobile:hover {
         color: var(--primary-color);
+        cursor: pointer;
     }
 
     .category-title-text {
@@ -205,6 +206,104 @@
     body {
         padding-bottom: 72px; 
     }
+
+    .meal-card {
+        background-color: #ffe6d2 !important;
+        border-radius: 20px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        padding-bottom: 70px;
+        width: 100%;
+    }
+
+    .meal-main-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .meal-image-container {
+        width: 100%;
+        height: 100px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .meal-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transform: scale(1.6);
+    }
+
+    .img-pizza-chorizo {
+        object-position: left center !important;
+    }
+
+    .img-funghi {
+        object-position: center 20% !important;
+    }
+
+    .img-quattro-formaggi-with-chicken {
+        object-position: right center !important;
+    }
+
+    .meal-info {
+        padding: 12px 15px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .meal-info h3 {
+        font-size: 18px;
+        margin: 0 0 5px 0;
+        color: #2d3133;
+        font-weight: 700;
+    }
+
+    .meal-info p {
+        display: block !important;
+        font-size: 13px;
+        color: #6f7377;
+        line-height: 1.4;
+        margin: 0;
+        white-space: normal;
+        word-wrap: break-word;
+        max-width: 100%;
+    }
+
+    .price {
+        position: absolute;
+        bottom: 25px;
+        left: 20px;
+        font-size: 18px;
+        font-weight: 800;
+        color: #2d3133;
+    }
+
+    .meal-action-area {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .add-btn {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.372);
+        cursor: pointer;
+    }
+
+    .added-badge-container {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.520);
+        cursor: pointer;
+    }    
 }
 
 @media (min-width: 769px) {
