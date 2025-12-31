@@ -1,3 +1,7 @@
+.close-basket-mobile {
+    display: none;
+}
+
 .basket-section {
     width: 350px;
     position: sticky;

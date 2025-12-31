@@ -100,6 +100,7 @@
     }
 
     .close-basket-mobile {
+        display: block;
         position: sticky;
         top: 0;
         text-align: right;
