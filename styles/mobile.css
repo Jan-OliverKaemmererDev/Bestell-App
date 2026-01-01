@@ -1,5 +1,9 @@
 @media (max-width: 768px) {
 
+    body {
+        padding-bottom: 72px;
+    }
+
     header {
         position: sticky !important;
         top: 0;
@@ -125,6 +129,16 @@
         cursor: pointer;
     }
 
+    .category-header-content {
+        justify-content: center;
+        padding-left: 0;
+        width: 100%;
+    }
+
+    .category-icon {
+        margin-bottom: 5px;
+    }
+
     .category-title-text {
         font-size: 18px;
     }
@@ -207,7 +221,7 @@
     }
     
     .basket-card h2 {
-        color: #f5e0cf;
+        color: white;
         text-align: center;
         margin-top: 40px;
     }
@@ -215,10 +229,6 @@
     main, .content-wrapper {
         overflow-x: hidden;
         width: 100%;
-    }
-
-    body {
-        padding-bottom: 72px;
     }
 
     .meal-card {
