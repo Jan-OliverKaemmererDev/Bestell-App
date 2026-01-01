@@ -1,13 +1,19 @@
 function getMealTemplate(categoryIndex, mealIndex) {
     const meal = myMeals[categoryIndex].meals[mealIndex];
+    const category = myMeals[categoryIndex].category;
     const basketIndex = findInBasket(meal.name);
-    const { imagePath, specialStyle } = getMealImageSettings(meal.name, myMeals[categoryIndex].category);
+    
+    const imagePath = `./assets/meals/${category}/${meal.name}.jpg`;
+    const mealClass = meal.name.toLowerCase().replace(/\s+/g, '-');
 
     return `
         <div class="meal-card">
             <div class="meal-main-content">
                 <div class="meal-image-container">
-                    <img src="${imagePath}" alt="${meal.name}" class="meal-img img-${meal.name.toLowerCase().replace(/\s+/g, '-')}" style="${specialStyle}" onerror="this.src='./assets/img/logo02.svg'">
+                    <img src="${imagePath}" 
+                         alt="${meal.name}" 
+                         class="meal-img img-${mealClass}" 
+                         onerror="this.src='./assets/img/logo02.svg'">
                 </div>
                 <div class="meal-info">
                     <h3>${meal.name}</h3>
@@ -23,19 +29,6 @@ function getMealTemplate(categoryIndex, mealIndex) {
 
 function formatPrice(price) {
     return price.toFixed(2).replace('.', ',') + '€';
-}
-
-function getMealImageSettings(mealName, category) {
-    let imagePath = `./assets/meals/${category}/${mealName}.jpg`;
-    let specialStyle = "";
-
-    if (["Pizza Chorizo", "Funghi", "Quattro Formaggi with Chicken"].includes(mealName)) {
-        imagePath = `./assets/meals/Pizza (30cm)/pizza.jpg`;
-        if (mealName === "Pizza Chorizo") specialStyle = "object-position: left;";
-        if (mealName === "Funghi") specialStyle = "object-position: center;";
-        if (mealName === "Quattro Formaggi with Chicken") specialStyle = "object-position: right;";
-    }
-    return { imagePath, specialStyle };
 }
 
 function getButtonHtml(catIdx, mealIdx, basketIdx) {

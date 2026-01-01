@@ -222,7 +222,6 @@
     }
 
     .meal-card {
-        background-color: #ffe6d2 !important;
         border-radius: 20px;
         margin-bottom: 25px;
         display: flex;
@@ -230,7 +229,7 @@
         position: relative;
         overflow: hidden;
         border: none;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.372);
         padding-bottom: 70px;
         width: 100%;
     }
@@ -252,20 +251,6 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        display: block;
-        transform: scale(1.6);
-    }
-
-    .img-pizza-chorizo {
-        object-position: left center !important;
-    }
-
-    .img-funghi {
-        object-position: center 20% !important;
-    }
-
-    .img-quattro-formaggi-with-chicken {
-        object-position: right center !important;
     }
 
     .meal-info {
