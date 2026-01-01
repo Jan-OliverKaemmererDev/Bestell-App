@@ -125,14 +125,8 @@ function updateBasketDisplay() {
     }
 }
 
-function renderEmptyMobileBasket(container) {
-    container.innerHTML = `
-        <div class="empty-basket-mobile">
-            <p class="empty-title">Nothing here yet.</p>
-            <p class="empty-subtitle">Go ahead and choose something delicious!</p>
-            <img src="./assets/icons/shopping_cart.svg" alt="Empty Basket" class="empty-basket-icon">
-        </div>
-    `;
+function renderEmptyMobileBasket(contentSection) {
+    contentSection.innerHTML = getEmptyBasketTemplate();
     document.getElementById('basket-totals-container').style.display = 'none';
 }
 

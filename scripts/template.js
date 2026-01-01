@@ -67,3 +67,12 @@ function getBasketItemTemplate(index) {
             ${quickDeleteIcon}
         </div>`;
 }
+
+function getEmptyBasketTemplate() {
+    return `
+    <div class="empty-basket-mobile">
+        <p class="empty-title">Nothing here yet.</p>
+        <p class="empty-subtitle">Go ahead and choose something delicious!</p>
+        <img src="./assets/icons/shopping_cart.svg" alt="Empty Basket" class="empty-basket-icon">
+    </div>`;
+}
