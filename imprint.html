@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg">
+    <title>Imprint - Bestell App</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/imprint.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="./index.html">
+                <img src="./assets/img/logo02.svg" alt="Logo" class="logo">
+            </a>
+            <nav>
+                <img src="./assets/icons/menu.svg" alt="Menu" class="menu-icon" onclick="toggleMenu()">
+            </nav>
+        </div>
+    </header>
+
+    <div id="side-menu" class="side-menu">
+        <div class="menu-header">
+            <span class="close-btn" onclick="toggleMenu()">×</span>
+        </div>
+    <div class="menu-links">
+        <a href="./index.html" onclick="toggleMenu()">Burger & Sandwiches</a>
+        <a href="./index.html" onclick="toggleMenu()">Pizza</a>
+        <a href="./index.html" onclick="toggleMenu()">Salad</a>
+        <hr>
+        <a href="./index.html" onclick="toggleMenu()">My Profile</a>
+        <a href="./index.html" onclick="toggleMenu()">My Orders</a>
+        <a href="./index.html" onclick="toggleMenu()">Vouchers</a>
+        <hr>
+        <a href="./imprint.html" onclick="toggleMenu()">Imprint</a>
+    </div>
+    </div>
+
+    <main class="imprint-container">
+        <section class="imprint-content">
+            <h1>Imprint</h1>
+            
+            <div class="profile-section">
+                <a href="https://github.com/Jan-OliverKaemmererDev" target="_blank">
+                <img src="./assets/img/profile-pic-jan.png" alt="profile pic Jan" class="imprint-profile-pic">
+                </a>
+                <div class="profile-text">
+                    <h2>Legal Disclosure</h2>
+                    <p>Information according to § 5 TMG</p>
+                </div>
+            </div>
+
+            <article>
+                <h3>Contact</h3>
+                <p>
+                    Jan-Oliver Kämmerer<br>
+                    Berliner Straße 18a<br>
+                    63110 Rodgau<br>
+                    Germany
+                </p>
+
+                <h3>Represented by</h3>
+                <p>Jan-Oliver Kämmerer</p>
+
+                <h3>Contact Information</h3>
+                <p>
+                    E-Mail: <a href="mailto:jowieja22@gmail.com">jowieja22@gmail.com</a>
+                </p>
+
+                <h3>VAT ID</h3>
+                <p>
+                    Sales tax identification number according to § 27 a Sales Tax Law
+                </p>
+
+                <h3>Dispute Resolution</h3>
+                <p>
+                    The European Commission provides a platform for online dispute resolution (OS): 
+                    <a href="https://ec.europa.eu/consumers/odr" target="_blank">https://ec.europa.eu/consumers/odr</a>.<br>
+                    We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="./index.html">Home</a>
+                <a href="./imprint.html">Imprint</a>
+            </div>
+            <p>© 2024 Bestell App - All rights reserved</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
