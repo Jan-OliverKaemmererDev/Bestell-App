@@ -151,8 +151,9 @@ header {
     align-items: center;
     justify-content: center;
     box-shadow: var(--shadow);
-    border: 4px solid white;
+    border: 8px solid #ffe6d2;
     overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.372);
 }
 
 .restaurant-logo-badge img {
