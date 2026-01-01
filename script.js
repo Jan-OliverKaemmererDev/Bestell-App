@@ -61,6 +61,9 @@ function changeQuantity(index, change) {
     basket[index].amount += change;
     if (basket[index].amount <= 0) {
         basket.splice(index, 1);
+        if (basket.length === 0) {
+            document.getElementById('basket-container').classList.remove('show-mobile');
+        }
     }
     saveAndRefresh();
 }
@@ -75,36 +78,37 @@ function updateBasketDisplay() {
     let basketContainer = document.getElementById('basket-container');
     let contentSection = document.getElementById('basket-content');
     let totalsContainer = document.getElementById('basket-totals-container');
+    let basketIcon = document.querySelector('.basket-nav img');
+    let isMobileOpen = basketContainer.classList.contains('show-mobile');
+
+    if (basketIcon) {
+        basketIcon.style.filter = isMobileOpen 
+            ? "invert(53%) sepia(88%) saturate(1518%) hue-rotate(345deg) brightness(96%) contrast(92%)" 
+            : "none";
+    }
 
     updateMobileBadge();
 
     if (basket.length === 0) {
-        basketContainer.classList.remove('show-mobile');
-        if (totalsContainer) {
-            totalsContainer.style.display = 'none';
-        }
-
-        if (window.innerWidth <= 768) {
-            renderEmptyMobileBasket(contentSection);
-            basketContainer.style.display = 'none'; 
-            basketContainer.classList.add('no-scroll');
-        } else {
-            basketContainer.style.display = 'none';
-        }
+        renderEmptyMobileBasket(contentSection);
+        if (totalsContainer) totalsContainer.style.display = 'none';
     } else {
-        basketContainer.classList.remove('no-scroll');
-        if (totalsContainer) {
-            totalsContainer.style.display = 'block';
-        }
-
-        if (window.innerWidth <= 768) {
-            basketContainer.style.display = basketContainer.classList.contains('show-mobile') ? 'block' : 'none';
-        } else {
-            basketContainer.style.display = 'block';
-        }
-
         renderBasketItems(contentSection);
         calculateTotals();
+        if (totalsContainer) totalsContainer.style.display = 'block';
+    }
+
+    if (window.innerWidth <= 768) {
+        basketContainer.style.display = isMobileOpen ? 'block' : 'none';
+        
+        if (isMobileOpen) {
+            basketContainer.classList.add('no-scroll');
+        } else {
+            basketContainer.classList.remove('no-scroll');
+        }
+    } else {
+        basketContainer.style.display = (basket.length > 0) ? 'block' : 'none';
+        basketContainer.classList.remove('no-scroll');
     }
 }
 
@@ -161,7 +165,9 @@ function formatPrice(price) {
 }
 
 function checkout() {
+    if (basket.length === 0) return;
     basket = [];
+    document.getElementById('basket-container').classList.remove('show-mobile');
     saveAndRefresh();
     showConfirmationMessage();
 }
@@ -203,4 +209,5 @@ function toggleMenu() {
 function toggleMobileBasket() {
     let basketContainer = document.getElementById('basket-container');
     basketContainer.classList.toggle('show-mobile');
+    updateBasketDisplay();
 }
