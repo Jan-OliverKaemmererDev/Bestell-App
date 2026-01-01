@@ -37,8 +37,8 @@ a {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -5000px;
-    right: -5000px;
+    left: -50vw;
+    right: -50vw;
     background-color: var(--primary-color);
     z-index: -1;
 }
