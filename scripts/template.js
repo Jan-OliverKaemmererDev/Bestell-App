@@ -47,6 +47,12 @@ function getBasketItemTemplate(index) {
     let item = basket[index];
     let icon = item.amount > 1 ? '-' : '<img src="./assets/icons/delete-default.svg" class="trash-icon">';
     let totalItemPrice = (item.price * item.amount).toFixed(2).replace('.', ',');
+
+    let quickDeleteIcon = item.amount > 1 ? 
+        `<button class="quick-delete-btn" onclick="removeItemFromBasket(${index})">
+            <img src="./assets/icons/delete-default.svg" class="trash-icon">
+         </button>` : '';
+
     return `
         <div class="basket-item">
             <div class="item-name-row">
@@ -58,5 +64,6 @@ function getBasketItemTemplate(index) {
                 <span style="font-weight:bold;">${item.amount}</span>
                 <button onclick="changeQuantity(${index}, 1)">+</button>
             </div>
+            ${quickDeleteIcon}
         </div>`;
 }

@@ -68,6 +68,19 @@ function changeQuantity(index, change) {
     saveAndRefresh();
 }
 
+function removeItemFromBasket(index) {
+    basket.splice(index, 1);
+    
+    if (basket.length === 0) {
+        let basketContainer = document.getElementById('basket-container');
+        if (basketContainer) {
+            basketContainer.classList.remove('show-mobile');
+        }
+    }
+    
+    saveAndRefresh();
+}
+
 function saveAndRefresh() {
     saveToLocalStorage();
     renderMeals();
