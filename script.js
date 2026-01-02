@@ -5,43 +5,44 @@ function init() {
 }
 
 function renderMeals() {
-    const containers = {
-        'Burgers': document.getElementById('burger-items'),
-        'Pizza': document.getElementById('pizza-items'),
-        'Salads': document.getElementById('salad-items')
-    };
-
-    const values = Object.values(containers);
-    for (let i = 0; i < values.length; i++) {
-        let div = values[i];
-        if (div) {
-            div.innerHTML = '';
-        }
-    }
-
+    clearMealContainers();
     for (let i = 0; i < myMeals.length; i++) {
-        let categoryName = myMeals[i].category;
-        
-        let targetId = '';
-        if(categoryName.includes('Burger')) targetId = 'burger-items';
-        if(categoryName.includes('Pizza')) targetId = 'pizza-items';
-        if(categoryName.includes('Salad')) targetId = 'salad-items';
+        renderCategoryMeals(i);
+    }
+}
 
-        let container = document.getElementById(targetId);
-        
-        if (container) {
-            for (let j = 0; j < myMeals[i].meals.length; j++) {
-                container.innerHTML += getMealTemplate(i, j);
-            }
+function clearMealContainers() {
+    let ids = ['burger-items', 'pizza-items', 'salad-items'];
+    for (let i = 0; i < ids.length; i++) {
+        let element = document.getElementById(ids[i]);
+        if (element) {
+            element.innerHTML = '';
         }
     }
 }
 
+function renderCategoryMeals(catIdx) {
+    let categoryName = myMeals[catIdx].category;
+    let targetId = getTargetId(categoryName);
+    let container = document.getElementById(targetId);
+    
+    if (container) {
+        for (let j = 0; j < myMeals[catIdx].meals.length; j++) {
+            container.innerHTML += getMealTemplate(catIdx, j);
+        }
+    }
+}
+
+function getTargetId(categoryName) {
+    if (categoryName.includes('Burger')) return 'burger-items';
+    if (categoryName.includes('Pizza')) return 'pizza-items';
+    if (categoryName.includes('Salad')) return 'salad-items';
+    return '';
+}
+
 function findInBasket(name) {
     for (let i = 0; i < basket.length; i++) {
-        if (basket[i].name === name) {
-            return i;
-        }
+        if (basket[i].name === name) return i;
     }
     return -1;
 }
@@ -60,24 +61,20 @@ function addToBasket(catIdx, mealIdx) {
 function changeQuantity(index, change) {
     basket[index].amount += change;
     if (basket[index].amount <= 0) {
-        basket.splice(index, 1);
-        if (basket.length === 0) {
-            document.getElementById('basket-container').classList.remove('show-mobile');
-        }
+        removeItemFromBasket(index);
+    } else {
+        saveAndRefresh();
     }
-    saveAndRefresh();
 }
 
 function removeItemFromBasket(index) {
     basket.splice(index, 1);
-    
     if (basket.length === 0) {
-        let basketContainer = document.getElementById('basket-container');
-        if (basketContainer) {
-            basketContainer.classList.remove('show-mobile');
+        let container = document.getElementById('basket-container');
+        if (container) {
+            container.classList.remove('show-mobile');
         }
     }
-    
     saveAndRefresh();
 }
 
@@ -89,19 +86,25 @@ function saveAndRefresh() {
 
 function updateBasketDisplay() {
     let basketContainer = document.getElementById('basket-container');
-    let contentSection = document.getElementById('basket-content');
-    let totalsContainer = document.getElementById('basket-totals-container');
-    let basketIcon = document.querySelector('.basket-nav img');
     let isMobileOpen = basketContainer.classList.contains('show-mobile');
+    updateBasketIconStyle(isMobileOpen);
+    updateMobileBadge();
+    renderBasketContentLogic();
+    handleResponsiveBasket(basketContainer, isMobileOpen);
+}
 
+function updateBasketIconStyle(isMobileOpen) {
+    let basketIcon = document.querySelector('.basket-nav img');
     if (basketIcon) {
         basketIcon.style.filter = isMobileOpen 
             ? "invert(53%) sepia(88%) saturate(1518%) hue-rotate(345deg) brightness(96%) contrast(92%)" 
             : "none";
     }
+}
 
-    updateMobileBadge();
-
+function renderBasketContentLogic() {
+    let contentSection = document.getElementById('basket-content');
+    let totalsContainer = document.getElementById('basket-totals-container');
     if (basket.length === 0) {
         renderEmptyMobileBasket(contentSection);
         if (totalsContainer) totalsContainer.style.display = 'none';
@@ -110,40 +113,35 @@ function updateBasketDisplay() {
         calculateTotals();
         if (totalsContainer) totalsContainer.style.display = 'block';
     }
+}
 
+function handleResponsiveBasket(container, isMobileOpen) {
     if (window.innerWidth <= 768) {
-        basketContainer.style.display = isMobileOpen ? 'block' : 'none';
-        
+        container.style.display = isMobileOpen ? 'block' : 'none';
         if (isMobileOpen) {
-            basketContainer.classList.add('no-scroll');
+            container.classList.add('no-scroll');
         } else {
-            basketContainer.classList.remove('no-scroll');
+            container.classList.remove('no-scroll');
         }
     } else {
-        basketContainer.style.display = (basket.length > 0) ? 'block' : 'none';
-        basketContainer.classList.remove('no-scroll');
+        container.style.display = (basket.length > 0) ? 'block' : 'none';
+        container.classList.remove('no-scroll');
     }
 }
 
 function renderEmptyMobileBasket(contentSection) {
     contentSection.innerHTML = getEmptyBasketTemplate();
-    document.getElementById('basket-totals-container').style.display = 'none';
 }
 
 function updateMobileBadge() {
-    var totalAmount = 0;
-    var badge = document.getElementById('nav-cart-count');
-    for (var i = 0; i < basket.length; i++) {
+    let totalAmount = 0;
+    let badge = document.getElementById('nav-cart-count');
+    for (let i = 0; i < basket.length; i++) {
         totalAmount += basket[i].amount;
     }
-
     if (badge) {
         badge.innerText = totalAmount;
-        if (totalAmount > 0) {
-            badge.style.display = 'flex';
-        } else {
-            badge.style.display = 'none';
-        }
+        badge.style.display = totalAmount > 0 ? 'flex' : 'none';
     }
 }
 
@@ -159,16 +157,10 @@ function calculateTotals() {
     for (let i = 0; i < basket.length; i++) {
         subtotal += (basket[i].price * basket[i].amount);
     }
-    let deliveryFee = 4.99;
-    let total = subtotal + deliveryFee;
-
+    let total = subtotal + 4.99;
     document.getElementById('subtotal').innerText = formatPrice(subtotal);
     document.getElementById('final-total').innerText = formatPrice(total);
     document.getElementById('btn-total').innerText = formatPrice(total);
-}
-
-function formatPrice(price) {
-    return price.toFixed(2).replace('.', ',') + '€';
 }
 
 function checkout() {
@@ -180,19 +172,14 @@ function checkout() {
 }
 
 function showConfirmationMessage() {
-    let overlay = document.getElementById('message-overlay');
-    let msg = document.getElementById('order-confirmation');
-
-    overlay.style.display = 'block';
-    msg.style.display = 'block';
-
+    document.getElementById('message-overlay').style.display = 'block';
+    document.getElementById('order-confirmation').style.display = 'block';
     setTimeout(closeConfirmation, 4000);
 }
 
 function closeConfirmation() {
     let overlay = document.getElementById('message-overlay');
     let msg = document.getElementById('order-confirmation');
-
     if (overlay) overlay.style.display = 'none';
     if (msg) msg.style.display = 'none';
 }
@@ -203,18 +190,14 @@ function saveToLocalStorage() {
 
 function loadFromLocalStorage() {
     let data = JSON.parse(localStorage.getItem("basket"));
-    if (data) {
-        basket = data;
-    }
+    if (data) basket = data;
 }
 
 function toggleMenu() {
-    let menu = document.getElementById('side-menu');
-    menu.classList.toggle('active');
+    document.getElementById('side-menu').classList.toggle('active');
 }
 
 function toggleMobileBasket() {
-    let basketContainer = document.getElementById('basket-container');
-    basketContainer.classList.toggle('show-mobile');
+    document.getElementById('basket-container').classList.toggle('show-mobile');
     updateBasketDisplay();
 }

@@ -1,20 +1,13 @@
 function getMealTemplate(categoryIndex, mealIndex) {
-    const meal = myMeals[categoryIndex].meals[mealIndex];
-    const category = myMeals[categoryIndex].category;
-    const basketIndex = findInBasket(meal.name);
+    let meal = myMeals[categoryIndex].meals[mealIndex];
+    let category = myMeals[categoryIndex].category;
+    let basketIndex = findInBasket(meal.name);
+    let imagePath = "./assets/meals/" + category + "/" + meal.name + ".jpg";
     
-    const imagePath = `./assets/meals/${category}/${meal.name}.jpg`;
-    const mealClass = meal.name.toLowerCase().replace(/\s+/g, '-');
-
     return `
         <div class="meal-card">
             <div class="meal-main-content">
-                <div class="meal-image-container">
-                    <img src="${imagePath}" 
-                         alt="${meal.name}" 
-                         class="meal-img img-${mealClass}" 
-                         onerror="this.src='./assets/img/logo02.svg'">
-                </div>
+                ${getMealImageHtml(meal.name, imagePath)}
                 <div class="meal-info">
                     <h3>${meal.name}</h3>
                     <p>${meal.description}</p>
@@ -27,8 +20,13 @@ function getMealTemplate(categoryIndex, mealIndex) {
         </div>`;
 }
 
-function formatPrice(price) {
-    return price.toFixed(2).replace('.', ',') + '€';
+function getMealImageHtml(name, path) {
+    let mealClass = name.toLowerCase().replace(/\s+/g, '-');
+    return `
+        <div class="meal-image-container">
+            <img src="${path}" alt="${name}" class="meal-img img-${mealClass}" 
+                 onerror="this.src='./assets/img/logo02.svg'">
+        </div>`;
 }
 
 function getButtonHtml(catIdx, mealIdx, basketIdx) {
@@ -45,13 +43,7 @@ function getButtonHtml(catIdx, mealIdx, basketIdx) {
 
 function getBasketItemTemplate(index) {
     let item = basket[index];
-    let icon = item.amount > 1 ? '-' : '<img src="./assets/icons/delete-default.svg" class="trash-icon">';
     let totalItemPrice = (item.price * item.amount).toFixed(2).replace('.', ',');
-
-    let quickDeleteIcon = item.amount > 1 ? 
-        `<button class="quick-delete-btn" onclick="removeItemFromBasket(${index})">
-            <img src="./assets/icons/delete-default.svg" class="trash-icon">
-         </button>` : '';
 
     return `
         <div class="basket-item">
@@ -60,19 +52,37 @@ function getBasketItemTemplate(index) {
                 <span>${totalItemPrice}€</span>
             </div>
             <div class="item-controls">
-                <button onclick="changeQuantity(${index}, -1)">${icon}</button>
-                <span style="font-weight:bold;">${item.amount}</span>
-                <button onclick="changeQuantity(${index}, 1)">+</button>
+                ${getBasketControlsHtml(index, item.amount)}
             </div>
-            ${quickDeleteIcon}
+            ${getQuickDeleteHtml(index, item.amount)}
         </div>`;
+}
+
+function getBasketControlsHtml(index, amount) {
+    let icon = amount > 1 ? '-' : '<img src="./assets/icons/delete-default.svg" class="trash-icon">';
+    return `
+        <button onclick="changeQuantity(${index}, -1)">${icon}</button>
+        <span style="font-weight:bold;">${amount}</span>
+        <button onclick="changeQuantity(${index}, 1)">+</button>`;
+}
+
+function getQuickDeleteHtml(index, amount) {
+    if (amount <= 1) return '';
+    return `
+        <button class="quick-delete-btn" onclick="removeItemFromBasket(${index})">
+            <img src="./assets/icons/delete-default.svg" class="trash-icon">
+        </button>`;
+}
+
+function formatPrice(price) {
+    return price.toFixed(2).replace('.', ',') + '€';
 }
 
 function getEmptyBasketTemplate() {
     return `
     <div class="empty-basket-mobile">
         <p class="empty-title">Nothing here yet.</p>
-        <p class="empty-subtitle">Go ahead and choose something delicious!</p>
+        <p>Choose your favorite meals and order them here.</p><br>
         <img src="./assets/icons/shopping_cart.svg" alt="Empty Basket" class="empty-basket-icon">
     </div>`;
 }
