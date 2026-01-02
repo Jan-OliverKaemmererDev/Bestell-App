@@ -9,66 +9,12 @@ a {
     text-decoration: none;
 }
 
-.main-container {
-    display: flex;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 20px;
-    gap: 20px;
-}
-
-.category-group {
-    margin-bottom: 40px;
-}
-
-/* category-header section */
-.category-header {
-    background-color: var(--primary-color);
-    height: 40px;
-    margin: 40px 0 25px 0;
+body {
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    line-height: 1.5;
+    margin: 0;
+    overflow-x: hidden; 
+    width: 100%;
     position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.category-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -50vw;
-    right: -50vw;
-    background-color: var(--primary-color);
-    z-index: -1;
-}
-
-.category-header-content {
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding-left: 10px;
-}
-
-.category-icon {
-    height: 60px;
-    width: auto;
-    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.2));
-    margin-top: -10px;
-    z-index: 2;
-}
-
-.category-title-text {
-    font-size: 20px;
-    font-weight: 800;
-    color: white;
-    letter-spacing: 1px;
-}
-
-.items-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
 }

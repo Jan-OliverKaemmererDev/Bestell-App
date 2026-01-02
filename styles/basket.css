@@ -142,12 +142,3 @@
     background-color: #555;
     cursor: not-allowed;
 }
-
-.added-badge-container {
-    display: flex;
-    align-items: center;
-    background-color: #ff8a00;
-    color: white;
-    padding: 8px;
-    border-radius: 8px;
-}

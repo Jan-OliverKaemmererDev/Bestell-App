@@ -71,10 +71,10 @@
 .added-badge-container {
     display: flex;
     align-items: center;
-    background-color: var(--primary-color);
+    background-color: var(--primary-hover);
     color: white;
-    padding: 5px 10px;
-    border-radius: 25px;
+    padding: 6px 12px;
+    border-radius: 20px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.520);
     cursor: pointer;
