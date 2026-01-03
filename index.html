@@ -13,19 +13,19 @@
     <link rel="stylesheet" href="./styles/mobile.css">
 </head>
 <body onload="init()">
-    <header>
+    <header role="banner">
         <div class="header-content">
-            <a href="./index.html">
+            <a href="./index.html" aria-label="Back to home">
             <img src="./assets/img/logo02.svg" alt="Bestell APP Logo" class="logo">
             </a>
-            <nav>
+            <nav aria-label="Main navigation">
                 <img src="./assets/icons/menu.svg" alt="Menu" class="menu-icon" onclick="toggleMenu()">
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="restaurant-hero">
+    <main id="main-content">
+        <section class="restaurant-hero" aria-label="Restaurant Information">
             <div class="hero-image-container">
                 <img src="./assets/img/hero-bg.jpg" alt="Burger and Pizza" class="hero-bg">
                 <div class="restaurant-logo-badge">
@@ -41,7 +41,7 @@
         
                     <div class="rating-container">
                         <span class="star">★</span>
-                        <span class="rating-number">4.1</span>
+                        <span class="rating-number" aria-label="Rating: 4.1 out of 5 stars">4.1</span>
                         <span class="rating-count">(317)</span>
                     </div>
                 </div>
@@ -52,11 +52,11 @@
 
         <div class="content-wrapper">
             
-            <section id="menu-container" class="menu-section">
+            <section id="menu-container" class="menu-section" aria-label="Food Menu">
                 <div id="section-burger" class="category-group">
                     <div class="category-header burger">
                         <div class="category-header-content">
-                            <img src="./assets/icons/burger.png" alt="Burger" class="category-icon">
+                            <img src="./assets/icons/burger.png" alt="Burger" class="category-icon" aria-labelledby="burger-category">
                             <h2 class="category-title-text">Burger & Sandwiches</h2>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                 <div id="section-pizza" class="category-group">
                     <div class="category-header pizza">
                         <div class="category-header-content">
-                            <img src="./assets/icons/pizza.png" alt="Pizza" class="category-icon">
+                            <img src="./assets/icons/pizza.png" alt="Pizza" class="category-icon" aria-labelledby="pizza-category">
                             <h2 class="category-title-text">Pizza</h2>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                 <div id="section-salad" class="category-group">
                     <div class="category-header salad">
                         <div class="category-header-content">
-                            <img src="./assets/icons/salad.png" alt="Salad" class="category-icon">
+                            <img src="./assets/icons/salad.png" alt="Salad" class="category-icon" aria-labelledby="salad-category">
                             <h2 class="category-title-text">Salad</h2>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                 </div>
             </section>
 
-            <aside id="basket-container" class="basket-section" style="display: none;">
+            <aside id="basket-container" class="basket-section" style="display: none;" aria-label="Shopping Basket">
                 <div class="close-basket-mobile" onclick="toggleMobileBasket()">×</div>
                 
                 <div class="basket-card">
@@ -107,7 +107,7 @@
                             <strong id="final-total">0,00€</strong>
                         </div>
             
-                        <button id="order-btn" onclick="checkout()" class="buy-now-btn">
+                        <button id="order-btn" onclick="checkout()" class="buy-now-btn" aria-label="Place order now">
                             Buy now (<span id="btn-total">0,00€</span>)
                         </button>
                     </div>
@@ -116,7 +116,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-content">
             <span>© 2025 BurgerHause</span>
             <div class="footer-links">
@@ -127,9 +127,9 @@
     </footer>
 
 <!-- Burger Menu Section -->
-<div id="side-menu" class="side-menu">
+<div id="side-menu" class="side-menu" role="navigation" aria-label="Side Navigation">
     <div class="menu-header">
-        <span class="close-btn" onclick="toggleMenu()">×</span>
+        <span class="close-btn" onclick="toggleMenu()" aria-label="Close menu">×</span>
     </div>
     <div class="menu-links">
         <a href="#burger-items" onclick="toggleMenu()">Burger & Sandwiches</a>
@@ -148,15 +148,15 @@
 <div id="message-overlay" class="message-overlay" style="display: none;"></div>
 
 <div id="order-confirmation" class="order-message" style="display: none;">
-    <span class="close-order-msg" onclick="closeConfirmation()">×</span>
+    <span class="close-order-msg" onclick="closeConfirmation()" aria-label="Close notification">×</span>
     <img src="./assets/icons/truck-order-confirmed.svg" alt="Truck" class="message-icon">
     <h3>Order Confirmed!</h3>
     <p>Your food is on the way!</p>
 </div>
 
 <!-- Mobile Navigator Section -->
- <nav class="mobile-nav">
-    <a href="#" class="nav-item">
+ <nav class="mobile-nav" aria-label="Mobile Bottom Navigation">
+    <a href="#" class="nav-item" aria-label="Home">
         <img src="./assets/icons/mobile/home-default.svg" alt="Home">
     </a>
     <a href="#" class="nav-item">
@@ -165,7 +165,7 @@
     <a href="#" class="nav-item">
         <img src="./assets/icons/mobile/orders-default.svg" alt="Menu">
     </a>
-    <a href="javascript:void(0)" class="nav-item basket-nav" onclick="toggleMobileBasket()">
+    <a href="javascript:void(0)" class="nav-item basket-nav" onclick="toggleMobileBasket()" aria-label="View basket">
         <img src="./assets/icons/mobile/basket-default.svg" alt="Cart">
         <span id="nav-cart-count" class="cart-badge">0</span>
     </a>
